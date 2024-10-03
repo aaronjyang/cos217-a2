@@ -26,6 +26,7 @@ char *Str_copy(char a[], const char b[]) {
     for (i = 0 ; i < Str_getLength(b); i++){
         a[i] = b[i];
     }
+    a[i] = '\0';
     return a;
 }
 
