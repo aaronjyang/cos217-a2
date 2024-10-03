@@ -4,8 +4,11 @@
 
 
 size_t Str_getLength(const char *str) {
+    const char* end;
+
     assert(str != NULL);
-    const char* end = str;
+
+    end = str;
     while (*end != '\0') {
         end++;
     }
@@ -13,10 +16,12 @@ size_t Str_getLength(const char *str) {
 }
 
 char *Str_copy(char *a, const char *b) {
+    char *temp;
+
     assert(a != NULL);
     assert(b != NULL);
 
-    char *temp = a;
+    temp = a;
 
     while (*b != '\0') {
         *temp = *b;
@@ -28,11 +33,14 @@ char *Str_copy(char *a, const char *b) {
 }
 
 char *Str_concat(char *a, const char *b) {
+    char* enda;
+    const char* endb;
+
     assert(a != NULL);
     assert(b != NULL);
 
-    char* enda = a;
-    const char* endb = b;
+    enda = a;
+    endb = b;
 
     while (*enda != '\0') {
         enda++;
@@ -49,13 +57,17 @@ char *Str_concat(char *a, const char *b) {
 }
 
 int Str_compare(const char *a, const char *b) {
+    size_t i;
+    const char *enda;
+    const char *endb;
+
     assert(a != NULL);
     assert(b != NULL);
 
-    int i = 0;
+    i = 0;
 
-    const char *enda = a;
-    const char *endb = b;
+    enda = a;
+    endb = b;
 
     while (*enda != '\0' && *endb != '\0') {
         if (*enda != *endb) {
@@ -75,6 +87,8 @@ int Str_compare(const char *a, const char *b) {
 
 
 char* Str_search(const char *a, const char *b) {
+    char* subStart;
+
     assert(a != NULL);
     assert(b != NULL);
 
@@ -82,7 +96,7 @@ char* Str_search(const char *a, const char *b) {
         return (char*)a;
     }
 
-    char* subStart = (char*) a;
+    subStart = (char*) a;
 
     while (*subStart != '\0') {
         int works = 1;
