@@ -3,9 +3,10 @@
 #include <stdlib.h>
 
 size_t Str_getLength(const char str[]) {
+    int length;
+
     assert(str != NULL);
 
-    int length;
     length = 0;
 
     while(str[length] != '\0') {
@@ -16,10 +17,10 @@ size_t Str_getLength(const char str[]) {
 
 
 char *Str_copy(char a[], const char b[]) {
+    int i;
+
     assert(a != NULL);
     assert(b != NULL);
-
-    int i;
 
     for (i = 0 ; i < Str_getLength(b); i++){
         a[i] = b[i];
@@ -29,23 +30,27 @@ char *Str_copy(char a[], const char b[]) {
 }
 
 char *Str_concat(char a[], const char b[]) {
+    int i;
+    int ogLength;
+
     assert(a != NULL);
     assert(b != NULL);
 
-    int ogLength;
     ogLength = Str_getLength(a);
-    int i;
+    
     for (i = 0 ; i < Str_getLength(b); i++){
         a[i+ogLength] = b[i];
     }
+
     return a;
 }
 
 int Str_compare(const char a[], const char b[]) {
+    int i;
+
     assert(a != NULL);
     assert(b != NULL);
 
-    int i;
     i = 0;
 
     while (a[i] != '\0' && b[i] != '\0'){ 
@@ -62,6 +67,8 @@ int Str_compare(const char a[], const char b[]) {
 }
 
 char* Str_search(const char a[], const char b[]) {
+    int i;
+
     assert(a != NULL);
     assert(b != NULL);
 
@@ -69,8 +76,7 @@ char* Str_search(const char a[], const char b[]) {
         return (char*)a;
     }
 
-    int i;
-    for (i = 0; i < Str_getLength(a) - Str_getLength(b); i++) {
+    for (int i = 0; i < Str_getLength(a) - Str_getLength(b); i++) {
         int works = 1;
         for (int j = 0; j < Str_getLength(b); j++) {
             if (a[i + j] != b[j]) {
