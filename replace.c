@@ -35,7 +35,7 @@ static size_t replaceAndWrite(const char *pcLine,
    }
 
    curr = (char*) pcLine;
-   while (Str_search(pcLine, pcFrom) != NULL) {
+   while (Str_search(curr, pcFrom) != NULL) {
       numReplaced++;
       while (curr != Str_search(pcLine, pcFrom)) {
          printf("%c", *curr);
