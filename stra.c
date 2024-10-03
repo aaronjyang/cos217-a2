@@ -57,12 +57,12 @@ int Str_compare(const char a[], const char b[]) {
 
     while (a[i] != '\0' && b[i] != '\0'){ 
         if (a[i] != b[i]) {
-            return a[i] - b[i];
+            return (int) (a[i] - b[i]);
         }
         i++;
     }
     if (a[i] != b[i]) {
-        return a[i] - b[i];
+        return (int) (a[i] - b[i]);
     }
 
     return 0;
@@ -78,7 +78,7 @@ char* Str_search(const char a[], const char b[]) {
         return NULL;
     }
 
-    for (i = 0; i < Str_getLength(a) - Str_getLength(b); i++) {
+    for (i = 0; i <= Str_getLength(a) - Str_getLength(b); i++) {
         int works = 1;
         size_t j;
         for (j = 0; j < Str_getLength(b); j++) {

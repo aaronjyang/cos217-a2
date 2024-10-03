@@ -12,7 +12,7 @@ size_t Str_getLength(const char *str) {
     while (*end != '\0') {
         end++;
     }
-    return end - str;
+    return (size_t) (end - str);
 }
 
 char *Str_copy(char *a, const char *b) {
@@ -68,7 +68,7 @@ int Str_compare(const char *a, const char *b) {
 
     while (*enda != '\0' && *endb != '\0') {
         if (*enda != *endb) {
-            return *enda -  *endb;
+            return (int) (*enda -  *endb);
         }
         enda++;
         endb++;
@@ -76,7 +76,7 @@ int Str_compare(const char *a, const char *b) {
 
     
     if (*enda != *endb) {
-        return *enda - *endb;
+        return (int) (*enda -  *endb);
     }
 
     return 0;
