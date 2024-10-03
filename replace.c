@@ -28,7 +28,7 @@ static size_t replaceAndWrite(const char *pcLine,
 
     numReplaced = 0;
     if (*pcFrom == '\0') {
-        printf("%s", pcFrom);
+        printf("%s", pcLine);
         return 0;
     }
 
