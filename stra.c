@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <string.h>
 
 size_t Str_getLength(const char str[]) {
     size_t length;
@@ -25,7 +26,6 @@ char *Str_copy(char a[], const char b[]) {
     for (i = 0 ; i < Str_getLength(b); i++){
         a[i] = b[i];
     }
-    a[Str_getLength(b)+1] = '\0';
     return a;
 }
 
