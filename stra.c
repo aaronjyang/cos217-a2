@@ -42,6 +42,7 @@ char *Str_concat(char a[], const char b[]) {
     for (i = 0; i < Str_getLength(b); i++){
         a[i+ogLength] = b[i];
     }
+    a[i+ogLength] = '\0';
 
     return a;
 }
