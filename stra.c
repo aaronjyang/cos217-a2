@@ -93,13 +93,3 @@ char* Str_search(const char a[], const char b[]) {
 
     return NULL;
 }
-
-
-
-int main() {
-    char a[40] = "qwerty";
-    char b[40] = "abcdqwertyabcd";
-
-    printf("%s", Str_copy(b, a));
-    return 0;
-}
