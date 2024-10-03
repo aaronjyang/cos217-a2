@@ -20,19 +20,21 @@
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
+   size_t numReplaced;
+   char *curr;
+   
    assert(pcLine != NULL);
    assert(pcFrom != NULL);
    assert(pcTo != NULL);
 
-   size_t numReplaced;
-
    numReplaced = 0;
+   
    if (*pcFrom == '\0') {
       printf("%s", pcLine);
       return 0;
    }
 
-   char *curr = (char*) pcLine;
+   curr = (char*) pcLine;
    while (Str_search(pcLine, pcFrom) != NULL) {
       numReplaced++;
       while (curr != Str_search(pcLine, pcFrom)) {
