@@ -24,36 +24,28 @@ static size_t replaceAndWrite(const char *pcLine,
    assert(pcFrom != NULL);
    assert(pcTo != NULL);
 
-    size_t numReplaced;
+   size_t numReplaced;
 
-    numReplaced = 0;
-    if (*pcFrom == '\0') {
-        printf("%s", pcLine);
-        return 0;
-    }
+   numReplaced = 0;
+   if (*pcFrom == '\0') {
+      printf("%s", pcLine);
+      return 0;
+   }
 
-    while (Str_search(pcLine, pcFrom) != NULL) {
-        numReplaced++;
-        char *start;
-        int diff;
-        int i;
-        char* shifting;
-
-        start = Str_search(pcLine, pcFrom);
-        diff = Str_getLength(pcTo) - Str_getLength(pcFrom);
-
-        shifting = (char*) (pcLine + Str_getLength(pcLine) - 1);
-        while (shifting != start + Str_getLength(pcTo)) {
-            *(shifting + diff) = *shifting;
-            shifting--;
-        }
-
-        for (i = 0; i < Str_getLength(pcTo); i++) {
-            start[i] = pcTo[i];
-        }
-    }
-   printf("%s", pcLine);
-    return numReplaced;
+   char *curr = (char*) pcLine;
+   while (Str_search(pcLine, pcFrom) != NULL) {
+      numReplaced++;
+      while (curr != Str_search(pcLine, pcFrom)) {
+         printf("%c", *curr);
+         curr++;
+      }
+      printf("%s", pcTo);
+      curr += Str_getLength(pcFrom);   
+   }
+   while (curr < pcLine + Str_getLength(pcLine)) {
+      printf("%c", *curr);
+   }
+   return numReplaced;
 }
 
 /*--------------------------------------------------------------------*/
@@ -89,7 +81,7 @@ int main(int argc, char *argv[])
    pcTo = argv[2];
 
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL){
-      uReplaceCount = replaceAndWrite(acLine, pcFrom, pcTo);
+      uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
    }
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
