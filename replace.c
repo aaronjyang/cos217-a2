@@ -44,9 +44,7 @@ static size_t replaceAndWrite(const char *pcLine,
       printf("%s", pcTo);
       curr += Str_getLength(pcFrom);   
    }
-   while (curr < pcLine + Str_getLength(pcLine)) {
-      printf("%c", *curr);
-   }
+   printf("%s", curr)
    return numReplaced;
 }
 
