@@ -74,8 +74,8 @@ char* Str_search(const char a[], const char b[]) {
     assert(a != NULL);
     assert(b != NULL);
 
-    if (b[0] == '\0') {
-        return (char*)a;
+    if (Str_getLength(b) > Str_getLength(a)) {
+        return NULL;
     }
 
     for (i = 0; i < Str_getLength(a) - Str_getLength(b); i++) {
