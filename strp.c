@@ -57,14 +57,11 @@ char *Str_concat(char *a, const char *b) {
 }
 
 int Str_compare(const char *a, const char *b) {
-    size_t i;
     const char *enda;
     const char *endb;
 
     assert(a != NULL);
     assert(b != NULL);
-
-    i = 0;
 
     enda = a;
     endb = b;
@@ -122,13 +119,4 @@ char* Str_search(const char *a, const char *b) {
     }
 
     return NULL;
-}
-
-
-
-int main() {
-    char a[40] = "qwerty";
-    char b[40] = "e";
-
-    printf("%s", Str_search(a, b));
 }
